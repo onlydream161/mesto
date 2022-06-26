@@ -1,0 +1,21 @@
+.profile__caption {
+    margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media screen and (max-width:568px) {
+    .profile__caption {
+        align-self: center;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+@media screen and (max-width:380px) {
+    .profile__caption {
+        margin: 14px auto 0;
+    }
+}
