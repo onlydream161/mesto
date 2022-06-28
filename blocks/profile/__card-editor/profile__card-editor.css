@@ -19,7 +19,7 @@
 @media screen and (max-width:900px) {
     .profile__card-editor {
         margin-left: 50px;
-        margin-top: 36px;
+        margin-top: 32px;
     }
 }
 
@@ -27,5 +27,6 @@
     .profile__card-editor {
         width: 282px;
         margin-left: 0px;
+        background-size: 16px;
     }
 }

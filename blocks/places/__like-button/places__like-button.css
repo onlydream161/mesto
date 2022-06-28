@@ -1,12 +1,13 @@
-.places__like {
+.places__like-button {
     width: 22px;
     height: 19px;
     background-image: url(../../../images/like.svg);
     margin-right: 5px;
     align-self: center;
+    border: none;
 }
 
-.places__like:hover {
+.places__like-button:hover {
     opacity: 0.5;
     cursor: pointer;
 }
