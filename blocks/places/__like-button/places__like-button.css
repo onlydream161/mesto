@@ -5,6 +5,7 @@
     margin-right: 5px;
     align-self: center;
     border: none;
+    background-color: white;
 }
 
 .places__like-button:hover {

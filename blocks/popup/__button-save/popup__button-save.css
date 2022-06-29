@@ -8,6 +8,9 @@
     background-color: black;
     color: #ffffff;
     border-radius: 2px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 }
 
 .popup__button-save:hover {

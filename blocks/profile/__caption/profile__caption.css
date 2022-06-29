@@ -11,7 +11,7 @@
 
 @media screen and (max-width:568px) {
     .profile__caption {
-        align-self: center;
+        text-align: center;
         font-size: 14px;
         line-height: 17px;
     }
@@ -19,7 +19,6 @@
 
 @media screen and (max-width:380px) {
     .profile__caption {
-        text-align: center;
         min-width: 100px;
         margin: 7px auto 0;
     }

@@ -6,7 +6,7 @@
     flex-wrap: wrap;
 }
 
-@media screen and (max-width:568px) {
+@media screen and (max-width:598px) {
     .page__profile {
         flex-direction: column;
     }
