@@ -17,14 +17,16 @@ const placeImageButton = document.querySelector('.places__image-button');
 const popupImageButtonClose = document.querySelector('.popup-foto__close-button');
 const popupImage = document.querySelector('.popup-foto__image');
 const popupimageName = document.querySelector('.popup-foto__name');
-
+const CardConteiner = document.querySelector('.places')
+const AddCard = document.querySelector('.addcard').content;
+const itemCard = AddCard.querySelector('.places__card');
 const initialCards = [{
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },
     {
         name: 'Челябинская область',
-        link: 'https://get.wallhere.com/photo/landscape-forest-mountains-lake-rock-nature-reflection-river-national-park-valley-wilderness-stream-mountain-ecosystem-water-feature-142420.jpg'
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
         name: 'Иваново',
@@ -43,20 +45,13 @@ const initialCards = [{
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-
-const CardConteiner = document.querySelector('.places')
-const AddCard = document.querySelector('.addcard').content;
-const itemCard = AddCard.querySelector('.places__card');
-const likeCardElement = AddCard.querySelector('.places__like-button');
-const removeCardButton = AddCard.querySelector('.places__trash')
-    //создание карточек по умолчанию 
+//создание карточек по умолчанию 
 initialCards.forEach(function(element) {
         const card = itemCard.cloneNode(true);
         card.querySelector('.places__name').textContent = element.name;
         card.querySelector('.places__image').src = element.link;
         card.querySelector('.places__image').alt = element.name;
         card.querySelector('.places__like-button').addEventListener('click', function(evt) {
-
             evt.target.classList.toggle('places__like-button_active');
         });
         card.querySelector('.places__image-button').addEventListener('click', function() {
@@ -67,9 +62,7 @@ initialCards.forEach(function(element) {
         card.querySelector('.places__trash').addEventListener('click', function() {
             card.remove();
         })
-
         CardConteiner.append(card);
-
     })
     //общая функция открытия попап
 function openAllPopup(popup) {
@@ -79,7 +72,6 @@ function openAllPopup(popup) {
 function closeAllPopup(popup) {
     popup.classList.remove('popup_opened')
 }
-
 //редактируем профиль 
 function formSubmitHandler(evt) {
     evt.preventDefault();
@@ -90,7 +82,6 @@ function formSubmitHandler(evt) {
     nameProfile.textContent = nameInput;
     jobProfile.textContent = jobInput;
     closeAllPopup(popupElement)
-
 }
 
 function addFirstName() {
@@ -111,6 +102,7 @@ function formSubmitCards(evt) {
     });
     addNewCard.querySelector('.places__image-button').addEventListener('click', function() {
         popupImage.src = LinkCardInput;
+        popupImage.alt = NameCardInput;
         popupimageName.textContent = NameCardInput;
         popupImageElement.classList.add('popup_opened')
     })
