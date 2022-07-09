@@ -4,6 +4,7 @@
     background-image: url(../../../images/like.svg);
     margin-right: 5px;
     align-self: center;
+    background-repeat: no-repeat;
     border: none;
     background-color: white;
 }

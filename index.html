@@ -27,49 +27,7 @@
 
         <section class="elements page__elements">
             <ul class="places">
-                <li class="places__card">
-                    <img class="places__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="places__caption">
-                        <h2 class=" places__name">Карачаевск</h2>
-                        <button class="places__like-button places__like-button_active" type="button"></button>
-                    </div>
 
-                </li>
-                <li class="places__card">
-                    <img class="places__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-                    <div class="places__caption">
-                        <h2 class=" places__name">Гора Эльбрус</h2>
-                        <button class="places__like-button places__like-button_active" type="button"></button>
-                    </div>
-                </li>
-                <li class="places__card">
-                    <img class="places__image" src="./images/dombay.jpg" alt="Домбай">
-                    <div class="places__caption">
-                        <h2 class=" places__name">Домбай</h2>
-                        <button class="places__like-button places__like-button_active" type="button"></button>
-                    </div>
-                </li>
-                <li class="places__card">
-                    <img class="places__image" src="./images/elbrus_2.jpg" alt="Гора Эльбрус">
-                    <div class="places__caption">
-                        <h2 class=" places__name">Гора Эльбрус</h2>
-                        <button class="places__like-button places__like-button_active" type="button"></button>
-                    </div>
-                </li>
-                <li class="places__card">
-                    <img class="places__image" src="./images/dombay_2.jpg" alt="Домбай">
-                    <div class="places__caption">
-                        <h2 class=" places__name">Домбай</h2>
-                        <button class="places__like-button places__like-button_active" type="button"></button>
-                    </div>
-                </li>
-                <li class="places__card">
-                    <img class="places__image" src="./images/karachaevsk_2.jpg" alt="Карачаево-Черкесия">
-                    <div class="places__caption">
-                        <h2 class=" places__name">Карачаево-Черкесия </h2>
-                        <button class="places__like-button places__like-button_active" type="button"></button>
-                    </div>
-                </li>
             </ul>
         </section>
     </main>
@@ -77,8 +35,8 @@
         <p class="footer__name">&copy; 2022 Mesto Russia</p>
     </footer>
 
-    <!-- Попап-->
-    <div class="popup ">
+    <!-- Попап профиль-->
+    <div class="popup page__popup-profile ">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль </h2>
             <form class="popup__form" name="namejob">
@@ -89,11 +47,41 @@
 
             <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
         </div>
-
-
     </div>
+    <!-- Попап карточки-->
+    <div class="popup page__popup-cards ">
+        <div class="popup__container">
+            <h2 class="popup__title">Новое Место</h2>
+            <form class="popup__form" name="namejob">
+                <input class="popup__input popup__input_valve_place" placeholder="Название" required type="text" name="nameplace">
+                <input class="popup__input popup__input_valve_link" placeholder="Ссылка на картинку" required type="text" name="placelink">
+                <button class="popup__button-save" type="submit"> Сохранить</button>
+            </form>
 
+            <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
+        </div>
+    </div>
+    <!-- Попап Фото-->
+    <div class="popup-foto  ">
+        <div class="popup-foto__container">
+            <img class="popup-foto__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg" alt="">
+            <p class="popup-foto__name">Эльбрус</p>
+            <button class="popup-foto__close-button" type="button"></button>
+        </div>
+    </div>
+    <!-- шаблон карточки-->
+    <template class="addcard">
+        <li class="places__card">
+                <button class="places__image-button" type="button" aria-label="открыть фото"><img class="places__image" src="" alt=""></button>
+                <div class="places__caption">
+                    <h2 class="places__name"></h2>
+                    <button class="places__like-button " type="button"></button>
+                </div>
+                <button class="places__trash" type="button"></button>
+        </li>
+    </template>
     <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>
