@@ -20,6 +20,8 @@ const popupimageName = document.querySelector('.popup-foto__name');
 const cardConteiner = document.querySelector('.places')
 const addCard = document.querySelector('.addcard').content;
 const itemCard = addCard.querySelector('.places__card');
+const popupButtonSave = popupElement.querySelector('.popup__button-save');
+
 const initialCards = [{
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -73,11 +75,16 @@ initialCards.forEach(function(element) {
     })
     //общая функция открытия попап
 function openAllPopup(popup) {
+    clearPopup()
     popup.classList.add('popup_opened')
 }
 // общая функция закрытия попап
 function closeAllPopup(popup) {
-    popup.classList.remove('popup_opened')
+    popup.classList.remove('popup_opened');
+    const forms = Array.from(document.querySelectorAll('.popup__form'))
+    forms.forEach((form) => {
+        form.reset()
+    })
 }
 //редактируем профиль 
 function handleProfileFormSubmit(evt) {
@@ -105,6 +112,31 @@ function handleCardFormSubmit(evt) {
     closeAllPopup(popupAddCard)
     popupCardsFormElement.reset();
 }
+// закрытие попап через оверлей
+function closePopupByOverlay(event, popup) {
+    if (event.target !== event.currentTarget) {
+        return
+    }
+    closeAllPopup(popup)
+}
+// закрытие попап через Esc
+function closePopupEsc(event, popup) {
+    if (event.keyCode === 27) {
+        closeAllPopup(popup)
+    }
+}
+// очищаем попап от сохраненных ошибок при закрытии на крестик
+function clearPopup() {
+    const error = Array.from(document.querySelectorAll('.popup__error'))
+    error.forEach((error) => {
+        error.textContent = ''
+    })
+    const redInput = Array.from(document.querySelectorAll('.popup__input'))
+    redInput.forEach((input) => {
+        input.classList.remove('popup__input_error')
+    })
+}
+
 
 popupCardsFormElement.addEventListener('submit', handleCardFormSubmit)
 formElement.addEventListener('submit', handleProfileFormSubmit);
@@ -116,3 +148,9 @@ popupCloseElement.addEventListener('click', () => closeAllPopup(popupElement))
 popupCardsOpenElement.addEventListener('click', () => openAllPopup(popupAddCard))
 popupCardsCloseElement.addEventListener('click', () => closeAllPopup(popupAddCard))
 popupImageButtonClose.addEventListener('click', () => closeAllPopup(popupImageElement))
+popupElement.addEventListener('click', () => closePopupByOverlay(event, popupElement))
+popupAddCard.addEventListener('click', () => closePopupByOverlay(event, popupAddCard))
+popupImageElement.addEventListener('mousedown', () => closePopupByOverlay(event, popupImageElement))
+document.addEventListener('keydown', () => closePopupEsc(event, popupElement))
+document.addEventListener('keydown', () => closePopupEsc(event, popupAddCard))
+document.addEventListener('keydown', () => closePopupEsc(event, popupImageElement))

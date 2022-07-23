@@ -39,10 +39,14 @@
     <div class="popup page__popup-profile ">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль </h2>
-            <form class="popup__form" name="namejob">
-                <input class="popup__input popup__input_valve_name" required type="text" name="firstname">
-                <input class="popup__input popup__input_valve_job" required type="text" name="job">
-                <button class="popup__button-save" type="submit"> Сохранить</button>
+            <form class="popup__form" name="namejob" novalidate>
+
+                <input class="popup__input  popup__input_valve_name" required type="text" name="firstname" minlength="2" maxlength="40">
+                <span class="popup__error"></span>
+
+                <input class="popup__input   popup__input_valve_job" required type="text" name="job" minlength="2" maxlength="200">
+                <span class="popup__error"></span>
+                <button class="popup__button-save popup__button-save_disabled" type="submit" disabled> Сохранить</button>
             </form>
 
             <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
@@ -52,12 +56,13 @@
     <div class="popup page__popup-cards ">
         <div class="popup__container">
             <h2 class="popup__title">Новое Место</h2>
-            <form class="popup__form" name="namejob">
-                <input class="popup__input popup__input_valve_place" placeholder="Название" required type="text" name="nameplace">
-                <input class="popup__input popup__input_valve_link" placeholder="Ссылка на картинку" required type="text" name="placelink">
-                <button class="popup__button-save" type="submit"> Сохранить</button>
+            <form class="popup__form" name="newcard" novalidate>
+                <input class="popup__input  popup__input_valve_place" placeholder="Название" required type="text" name="nameplace" minlength="2" maxlength="30">
+                <span class="popup__error"></span>
+                <input class="popup__input  popup__input_valve_link" placeholder="Ссылка на картинку" required type="url" name="placelink">
+                <span class="popup__error"></span>
+                <button class="popup__button-save popup__button-save_disabled" id="cardbutton" type="submit" disabled> Сохранить</button>
             </form>
-
             <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
         </div>
     </div>
@@ -81,6 +86,7 @@
         </li>
     </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 
 </body>
 

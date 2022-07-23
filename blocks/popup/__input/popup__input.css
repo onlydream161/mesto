@@ -2,7 +2,7 @@
     box-sizing: border-box;
     width: 358px;
     height: 27px;
-    margin: 0 36px 30px;
+    margin: 0px 36px 0px;
     border-style: none;
     border-width: 0px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -16,6 +16,6 @@
 @media screen and (max-width:568px) {
     .popup__input {
         width: 238px;
-        margin: 0 23px 30px;
+        margin: 0px 23px 0px;
     }
 }
