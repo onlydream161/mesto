@@ -77,6 +77,8 @@ initialCards.forEach(function(element) {
 function openAllPopup(popup) {
     clearPopup()
     popup.classList.add('popup_opened')
+    document.addEventListener('keydown', () => closePopupEsc(event, popup))
+    popup.addEventListener('mousedown', () => closePopupByOverlay(event, popup))
 }
 // общая функция закрытия попап
 function closeAllPopup(popup) {
@@ -85,6 +87,8 @@ function closeAllPopup(popup) {
     forms.forEach((form) => {
         form.reset()
     })
+    document.removeEventListener('keydown', () => closePopupEsc(event, popup))
+    popup.removeEventListener('mousedown', () => closePopupByOverlay(event, popup))
 }
 //редактируем профиль 
 function handleProfileFormSubmit(evt) {
@@ -148,9 +152,3 @@ popupCloseElement.addEventListener('click', () => closeAllPopup(popupElement))
 popupCardsOpenElement.addEventListener('click', () => openAllPopup(popupAddCard))
 popupCardsCloseElement.addEventListener('click', () => closeAllPopup(popupAddCard))
 popupImageButtonClose.addEventListener('click', () => closeAllPopup(popupImageElement))
-popupElement.addEventListener('click', () => closePopupByOverlay(event, popupElement))
-popupAddCard.addEventListener('click', () => closePopupByOverlay(event, popupAddCard))
-popupImageElement.addEventListener('mousedown', () => closePopupByOverlay(event, popupImageElement))
-document.addEventListener('keydown', () => closePopupEsc(event, popupElement))
-document.addEventListener('keydown', () => closePopupEsc(event, popupAddCard))
-document.addEventListener('keydown', () => closePopupEsc(event, popupImageElement))
