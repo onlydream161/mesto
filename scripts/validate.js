@@ -9,15 +9,8 @@ const formPage = {
 function enableValidation(config) {
     const form = Array.from(document.querySelectorAll(config.form));
     form.forEach((form) => {
-        form.addEventListener('submit', handleFormSubmit);
         form.addEventListener('input', (evt) => handleFormInput(evt, config));
     })
-}
-
-function handleFormSubmit(evt) {
-    evt.preventDefault();
-    const form = evt.currentTarget;
-    const isValid = form.checkValidity();
 }
 
 function handleFormInput(evt, config) {
@@ -29,23 +22,21 @@ function handleFormInput(evt, config) {
 }
 
 function showFieldError(input) {
-    const span = input.nextElementSibling;
+    const span = document.getElementById(`${input.getAttribute('name')}-error`)
     span.textContent = input.validationMessage;
 }
 
 function setSubmitButtonState(form, config) {
-    const button = Array.from(form.querySelectorAll(config.button));
-    button.forEach((button) => {
-        const isValid = form.checkValidity();
-        if (isValid) {
-            button.removeAttribute('disabled');
-            button.classList.remove(config.buttonDisabled);
-        }
-        if (!isValid) {
-            button.setAttribute('disabled', true);
-            button.classList.add(config.buttonDisabled);
-        }
-    })
+    const button = form.querySelector(config.button)
+    const isValid = form.checkValidity();
+    if (isValid) {
+        button.removeAttribute('disabled');
+        button.classList.remove(config.buttonDisabled);
+    }
+    if (!isValid) {
+        button.setAttribute('disabled', true);
+        button.classList.add(config.buttonDisabled);
+    }
 }
 
 function setErrorInput(form, config) {
