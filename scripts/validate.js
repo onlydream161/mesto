@@ -16,14 +16,16 @@ function enableValidation(config) {
 function handleFormInput(evt, config) {
     const input = evt.target;
     const form = evt.currentTarget;
-    showFieldError(input);
+
+    showFieldError(input, form);
     setSubmitButtonState(form, config);
     setErrorInput(form, config)
 }
 
-function showFieldError(input) {
-    const span = document.getElementById(`${input.getAttribute('name')}-error`)
+function showFieldError(input, form) {
+    const span = form.querySelector(`#${input.name}-error`);
     span.textContent = input.validationMessage;
+
 }
 
 function setSubmitButtonState(form, config) {

@@ -23,6 +23,7 @@ const itemCard = addCard.querySelector('.places__card');
 const popupButtonSave = popupProfileEdit.querySelector('.popup__button-save');
 const popupAddCardButtonSave = popupAddCard.querySelector('.popup__button-save')
 
+
 // создание карточки
 function createCard(name, link) {
     const cardElement = itemCard.cloneNode(true);
@@ -94,7 +95,7 @@ function closePopupByOverlay(event) {
     if (event.target !== event.currentTarget) {
         return
     }
-    const openedPopup = document.querySelector('.popup_opened')
+    const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup)
 }
 // закрытие попап через Esc
