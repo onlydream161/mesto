@@ -47,32 +47,33 @@ function addFirstName() {
 }
 // функция для слушателя в класс Card
 const handleZoomCardsPopup = (name, link) => {
-        popupImage.src = link;
-        popupimageName.textContent = name;
-        popupImage.alt = name;
-        openPopup(popupImageElement);
+    popupImage.src = link;
+    popupimageName.textContent = name;
+    popupImage.alt = name;
+    openPopup(popupImageElement);
+}
+const renderCard = (card) => {
+        cardConteiner.prepend(card);
     }
     //функция для создания карточки из классa Card
-const defaultCards = (item) => {
-    const card = new Card(item, '.addcard', handleZoomCardsPopup);
-    const cardElement = card.generateCard();
-    cardConteiner.prepend(cardElement);
-};
-//создаем дефолтные карточки
-initialCards.forEach((item) => { defaultCards(item) });
+const createCard = (item) => {
+        const card = new Card(item, '.addcard', handleZoomCardsPopup);
+        const cardElement = card.generateCard();
+        renderCard(cardElement)
+    }
+    //создаем дефолтные карточки
+initialCards.forEach((item) => { createCard(item) });
 // добавляем новые карточки
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const card = {
         name: popupAddCardInputName.value,
         link: popupAddCardInputlink.value
-
     };
-    defaultCards(card);
+    createCard(card);
     closePopup(popupAddCard);
     popupCardsFormElement.reset();
-    popupAddCardButtonSave.setAttribute('disabled', true);
-    popupAddCardButtonSave.classList.add('popup__button-save_disabled');
+    formCardPopupValidation.setSubmitButtonStateNotValid()
 }
 // проверяем форму профиля
 const formProfilePopupValidation = new FormValidator(formPage, formProfileElement)
@@ -80,33 +81,18 @@ formProfilePopupValidation.enableValidation();
 //проверяем форму карточки 
 const formCardPopupValidation = new FormValidator(formPage, formCardsAdd)
 formCardPopupValidation.enableValidation();
-//очищаем попап от сохраненных ошибок при закрытии на крестик
-function clearPopup() {
-    const errors = Array.from(document.querySelectorAll('.popup__error'))
-    errors.forEach((error) => {
-        error.textContent = ''
-    })
-    const redInputs = Array.from(document.querySelectorAll('.popup__input'))
-    redInputs.forEach((input) => {
-        input.classList.remove('popup__input_error')
-    })
-    const forms = Array.from(document.querySelectorAll('.popup__form'))
-    forms.forEach((form) => {
-        form.reset()
-    })
-}
 //слушатели
 popupCardsFormElement.addEventListener('submit', handleCardFormSubmit)
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
 popupOpenElement.addEventListener('click', () => {
-    clearPopup()
+    formProfilePopupValidation.clearError()
     addFirstName()
     openPopup(popupProfileEdit)
 })
 popupProfileCloseElement.addEventListener('click', () => closePopup(popupProfileEdit))
 popupCardsOpenElement.addEventListener('click', () => {
     openPopup(popupAddCard);
-    clearPopup()
+    formCardPopupValidation.clearError()
 })
 popupCardsCloseElement.addEventListener('click', () => closePopup(popupAddCard))
 popupImageButtonClose.addEventListener('click', () => closePopup(popupImageElement))
