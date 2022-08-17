@@ -90,9 +90,9 @@ formCardPopupValidation.enableValidation();
 popupCardsFormElement.addEventListener('submit', handleCardFormSubmit)
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
 popupOpenElement.addEventListener('click', () => {
-    formProfilePopupValidation.clearError()
-    addFirstName()
     openPopup(popupProfileEdit)
+    addFirstName()
+    formProfilePopupValidation.clearError()
 })
 popupProfileCloseElement.addEventListener('click', () => closePopup(popupProfileEdit))
 popupCardsOpenElement.addEventListener('click', () => {
