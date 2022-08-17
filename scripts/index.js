@@ -52,17 +52,22 @@ const handleZoomCardsPopup = (name, link) => {
     popupImage.alt = name;
     openPopup(popupImageElement);
 }
-const renderCard = (card) => {
-        cardConteiner.prepend(card);
-    }
-    //функция для создания карточки из классa Card
+
+function renderCard(card) {
+    cardConteiner.prepend(card);
+}
+//функция для создания карточки из классa Card
 const createCard = (item) => {
         const card = new Card(item, '.addcard', handleZoomCardsPopup);
         const cardElement = card.generateCard();
-        renderCard(cardElement)
+        return cardElement
     }
     //создаем дефолтные карточки
-initialCards.forEach((item) => { createCard(item) });
+initialCards.forEach((item) => {
+    const card = createCard(item);
+    renderCard(card);
+
+});
 // добавляем новые карточки
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
@@ -70,10 +75,10 @@ function handleCardFormSubmit(evt) {
         name: popupAddCardInputName.value,
         link: popupAddCardInputlink.value
     };
-    createCard(card);
+    const newCard = createCard(card);
+    renderCard(newCard);
     closePopup(popupAddCard);
     popupCardsFormElement.reset();
-    formCardPopupValidation.setSubmitButtonStateNotValid()
 }
 // проверяем форму профиля
 const formProfilePopupValidation = new FormValidator(formPage, formProfileElement)
@@ -92,7 +97,10 @@ popupOpenElement.addEventListener('click', () => {
 popupProfileCloseElement.addEventListener('click', () => closePopup(popupProfileEdit))
 popupCardsOpenElement.addEventListener('click', () => {
     openPopup(popupAddCard);
-    formCardPopupValidation.clearError()
+    formCardPopupValidation.clearError();
 })
-popupCardsCloseElement.addEventListener('click', () => closePopup(popupAddCard))
+popupCardsCloseElement.addEventListener('click', () => {
+    closePopup(popupAddCard);
+
+})
 popupImageButtonClose.addEventListener('click', () => closePopup(popupImageElement))
