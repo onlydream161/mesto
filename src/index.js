@@ -1,11 +1,24 @@
-import initialCards from "./defaultcards.js";
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import Section from "./Section.js";
-import Popup from "./Popup.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
+import './pages/index.css';
+import {
+    popupOpenElement,
+    popupInputNameElement,
+    popupInputJobElement,
+    profileName,
+    pofileCaption,
+    formProfileElement,
+    popupCardsOpenElement,
+    cardConteiner,
+    formCardsAdd,
+    formPage
+} from "./scripts/constants.js"
+import initialCards from "./scripts/defaultcards.js";
+import Card from "./scripts/Card.js";
+import FormValidator from "./scripts/FormValidator.js";
+import Section from "./scripts/Section.js";
+import Popup from "./scripts/Popup.js";
+import PopupWithImage from "./scripts/PopupWithImage.js";
+import PopupWithForm from "./scripts/PopupWithForm.js";
+import UserInfo from "./scripts/UserInfo.js";
 
 
 const popupProfile = new Popup('.page__popup-profile');
