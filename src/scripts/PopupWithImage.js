@@ -7,6 +7,7 @@ export default class PopupWithImage extends Popup {
         super(popupSelector)
         this._imagePopup = this._popupSelector.querySelector('.popup-foto__image');
         this._titlePopup = this._popupSelector.querySelector('.popup-foto__name');
+        this._buttonClose = this._popupSelector.querySelector('.popup-foto__close-button')
 
     }
     open(name, link) {
@@ -14,5 +15,10 @@ export default class PopupWithImage extends Popup {
         this._titlePopup.textContent = name;
         this._imagePopup.alt = name;
         super.open()
+    }
+    setEventListeners() {
+        super.setEventListeners()
+        this._buttonClose.addEventListener('click', () => super.close())
+
     }
 }
