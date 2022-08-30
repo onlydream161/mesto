@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { formPage } from "./constants.js";
+import { formPage } from "../utils/constants.js";
 
 
 
@@ -7,7 +7,7 @@ export default class PopupWithForm extends Popup {
     constructor(popupSelector, handleCardFormSubmit) {
         super(popupSelector);
         this._handleCardFormSubmit = handleCardFormSubmit;
-        this._form = this._popupSelector.querySelector(formPage.form);
+        this._form = this._popup.querySelector(formPage.form);
         this._inputFormList = this._form.querySelectorAll(formPage.input);
 
     }

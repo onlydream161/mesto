@@ -49,7 +49,7 @@ class FormValidator {
             this._setErrorInputInvalid(input);
         }
     }
-    clearError() {
+    resetValidation() {
         this._setSubmitButtonStateNotValid()
         this._inputs.forEach((input) => {
             this._setErrorInputValid(input)

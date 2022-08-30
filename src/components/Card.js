@@ -2,8 +2,9 @@ class Card {
     constructor(data, templateSelector, handleZoomCardsPopup) {
         this._name = data.name;
         this._link = data.link;
-        this._templateSelector = templateSelector
-        this._handleZoomCardsPopup = handleZoomCardsPopup
+        this._templateSelector = templateSelector;
+        this._handleZoomCardsPopup = handleZoomCardsPopup;
+
     }
     _getTemplate() {
         const cardElement = document
@@ -16,6 +17,7 @@ class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners()
+
         const elementCardImage = this._element.querySelector('.places__image');
         this._element.querySelector('.places__name').textContent = this._name;
         elementCardImage.src = this._link;
@@ -24,13 +26,14 @@ class Card {
         return this._element
     }
     _handleLikeButton() {
-        this._element.querySelector('.places__like-button').classList.toggle('places__like-button_active');
+        this._elementButtonLike.classList.toggle('places__like-button_active');
     }
     _removeCard() {
         this._element.remove()
     }
     _setEventListeners() {
-        this._element.querySelector('.places__like-button').addEventListener('click', () => {
+        this._elementButtonLike = this._element.querySelector('.places__like-button');
+        this._elementButtonLike.addEventListener('click', () => {
             this._handleLikeButton()
         })
         this._element.querySelector('.places__trash').addEventListener('click', () => {
