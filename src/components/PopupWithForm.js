@@ -3,12 +3,14 @@ import { formPage } from "../utils/constants.js";
 
 
 
+
 export default class PopupWithForm extends Popup {
     constructor(popupSelector, handleCardFormSubmit) {
         super(popupSelector);
         this._handleCardFormSubmit = handleCardFormSubmit;
         this._form = this._popup.querySelector(formPage.form);
         this._inputFormList = this._form.querySelectorAll(formPage.input);
+
 
     }
 
@@ -20,6 +22,7 @@ export default class PopupWithForm extends Popup {
         });
         return this._inputValues
     }
+
     setEventListeners() {
 
         super.setEventListeners();
