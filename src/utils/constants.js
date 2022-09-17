@@ -7,6 +7,7 @@ const formProfileElement = document.querySelector('.popup__form[name="namejob"]'
 const popupCardsOpenElement = document.querySelector('.profile__card-button');
 const cardConteiner = document.querySelector('.places')
 const formCardsAdd = document.querySelector('.popup__form[name="newcard"]');
+const formAvatar = document.querySelector('.popup__form[name="avatarlink"]')
 const formPage = {
     form: '.popup__form',
     button: '.popup__button-save',
@@ -15,6 +16,8 @@ const formPage = {
     buttonDisabled: 'popup__button-save_disabled',
     spanError: '.popup__error'
 };
+const avatarElement = document.querySelector('.page__image-container')
+const avatarImageElement = document.querySelector('.profile__image')
 export {
     popupOpenElement,
     popupInputNameElement,
@@ -25,5 +28,8 @@ export {
     popupCardsOpenElement,
     cardConteiner,
     formCardsAdd,
-    formPage
+    formPage,
+    avatarElement,
+    formAvatar,
+    avatarImageElement
 }
