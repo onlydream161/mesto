@@ -2,10 +2,10 @@ const popupOpenElement = document.querySelector('.profile__editor');
 const popupInputNameElement = document.querySelector('.popup__input_valve_name');
 const popupInputJobElement = document.querySelector('.popup__input_valve_job');
 const profileName = document.querySelector('.profile__name');
-const pofileCaption = document.querySelector('.profile__caption');
+const profileCaption = document.querySelector('.profile__caption');
 const formProfileElement = document.querySelector('.popup__form[name="namejob"]');
 const popupCardsOpenElement = document.querySelector('.profile__card-button');
-const cardConteiner = document.querySelector('.places')
+const cardsConteiner = document.querySelector('.places')
 const formCardsAdd = document.querySelector('.popup__form[name="newcard"]');
 const formAvatar = document.querySelector('.popup__form[name="avatarlink"]')
 const formPage = {
@@ -23,10 +23,10 @@ export {
     popupInputNameElement,
     popupInputJobElement,
     profileName,
-    pofileCaption,
+    profileCaption,
     formProfileElement,
     popupCardsOpenElement,
-    cardConteiner,
+    cardsConteiner,
     formCardsAdd,
     formPage,
     avatarElement,

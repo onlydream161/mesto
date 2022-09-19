@@ -1,14 +1,15 @@
 class FormValidator {
-    constructor(config, popupform) {
+    constructor(config, popupForm) {
         this._config = config;
-        this._popupform = popupform;
+        this._popupform = popupForm;
         this._button = this._popupform.querySelector(this._config.button);
         this._inputs = Array.from(this._popupform.querySelectorAll(this._config.input))
     }
     _handleFormInput(evt) {
         this._input = evt.target;
-        this._setSubmitButtonStateValid(this._popupform);
+        this._setSubmitButtonStateValid();
         this._setErrorInput(this._input)
+        this._toggleSubmitButtonState(this._input)
     }
     _showFieldError(input) {
         this._span = this._popupform.querySelector(`#${input.name}-error`);
@@ -18,8 +19,8 @@ class FormValidator {
         this._span = this._popupform.querySelector(`#${input.name}-error`);
         this._span.textContent = '';
     }
-    _setSubmitButtonStateValid(form) {
-        const isValid = form.checkValidity();
+    _setSubmitButtonStateValid() {
+        const isValid = this._popupform.checkValidity();
         if (isValid) {
             this._button.removeAttribute('disabled');
             this._button.classList.remove(this._config.buttonDisabled);
@@ -39,7 +40,15 @@ class FormValidator {
     _setErrorInputInvalid(input) {
         input.classList.add(this._config.inputError);
         this._showFieldError(input, this._popupform)
-        this._setSubmitButtonStateNotValid()
+
+    }
+    _toggleSubmitButtonState(input) {
+        const isValid = input.checkValidity();
+        if (!isValid) {
+            this._setSubmitButtonStateNotValid()
+        }
+
+
     }
     _setErrorInput(input) {
         const isValid = input.checkValidity();
