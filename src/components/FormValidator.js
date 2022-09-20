@@ -1,9 +1,9 @@
 class FormValidator {
     constructor(config, popupForm) {
         this._config = config;
-        this._popupform = popupForm;
-        this._button = this._popupform.querySelector(this._config.button);
-        this._inputs = Array.from(this._popupform.querySelectorAll(this._config.input))
+        this._popupForm = popupForm;
+        this._button = this._popupForm.querySelector(this._config.button);
+        this._inputs = Array.from(this._popupForm.querySelectorAll(this._config.input))
     }
     _handleFormInput(evt) {
         this._input = evt.target;
@@ -12,15 +12,15 @@ class FormValidator {
         this._toggleSubmitButtonState(this._input)
     }
     _showFieldError(input) {
-        this._span = this._popupform.querySelector(`#${input.name}-error`);
+        this._span = this._popupForm.querySelector(`#${input.name}-error`);
         this._span.textContent = input.validationMessage;
     }
     _hideFieldError(input) {
-        this._span = this._popupform.querySelector(`#${input.name}-error`);
+        this._span = this._popupForm.querySelector(`#${input.name}-error`);
         this._span.textContent = '';
     }
     _setSubmitButtonStateValid() {
-        const isValid = this._popupform.checkValidity();
+        const isValid = this._popupForm.checkValidity();
         if (isValid) {
             this._button.removeAttribute('disabled');
             this._button.classList.remove(this._config.buttonDisabled);
@@ -31,7 +31,7 @@ class FormValidator {
         this._button.classList.add(this._config.buttonDisabled);
     }
     enableValidation() {
-        this._popupform.addEventListener('input', (evt) => this._handleFormInput(evt));
+        this._popupForm.addEventListener('input', (evt) => this._handleFormInput(evt));
     }
     _setErrorInputValid(input) {
         input.classList.remove(this._config.inputError);
@@ -39,7 +39,7 @@ class FormValidator {
     }
     _setErrorInputInvalid(input) {
         input.classList.add(this._config.inputError);
-        this._showFieldError(input, this._popupform)
+        this._showFieldError(input, this._popupForm)
 
     }
     _toggleSubmitButtonState(input) {

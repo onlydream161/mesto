@@ -88,12 +88,12 @@ const popupWithFormCard = new PopupWithForm(
     (data) => {
         api.postNewCard(data).then((res) => {
                 const cardElement = createCard(res);
-                section.addItem(cardElement)
+                section.addItem(cardElement);
+                popupWithFormCard.close()
             })
             .catch((err) => console.log(err))
             .finally(() => {
                 popupWithFormCard.renderLoading({ isLoading: false });
-                popupWithFormCard.close()
             })
     }
 );
@@ -102,11 +102,14 @@ const popupWithProfile = new PopupWithForm(
         '.page__popup-profile',
         (data) => {
             api.editProfile(data)
-                .then((res) => { profileInfo.setUserInfo({ name: res.name, job: res.about, avatar: res.avatar }) })
+                .then((res) => {
+                    profileInfo.setUserInfo({ name: res.name, job: res.about, avatar: res.avatar });
+                    popupWithProfile.close()
+                })
                 .catch((err) => console.log(err))
                 .finally(() => {
                     popupWithProfile.renderLoading({ isLoading: false });
-                    popupWithProfile.close()
+
                 });
         }
     )
@@ -117,9 +120,10 @@ const handleDeleteCard = (id, cardElement) => {
         api.deleteСard(id)
             .then(() => {
                 cardElement.removeCard();
+                popupDeleteCard.close();
             })
             .catch((err) => console.log(err))
-            .finally(() => { popupDeleteCard.close(); })
+
     })
 }
 
